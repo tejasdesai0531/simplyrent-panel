@@ -8,14 +8,13 @@ import { AddCityComponent } from './components/add-city/add-city.component';
 
 @NgModule({
   declarations: [
-    
-  
-    CityListComponent,
-            AddCityComponent
+    // CityListComponent,
+    // AddCityComponent
   ],
   imports: [
     CommonModule,
     CityRoutingModule
-  ]
+  ],
+  
 })
 export class CityModule { }

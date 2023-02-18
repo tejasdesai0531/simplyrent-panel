@@ -1,23 +1,19 @@
-<!-- <p>city-list works!</p>
-<a routerLink="/city/add-city">Add City</a> -->
-<button class="addCityBtn" routerLink="/city/add-city">Add City</button>
-<nz-table #editRowTable nzBordered [nzData]="cityList" nzTableLayout="fixed">
+<button class="addBannerBtn" routerLink="/banner/add-banner">Add Banner</button>
+<nz-table #editRowTable nzBordered [nzData]="bannerList" nzTableLayout="fixed">
     <thead>
       <tr>
-        <th nzWidth="20%">City Name</th>
-        <th nzWidth="15%">City Code</th>
+        <th nzWidth="20%">Image_url</th>
+        <th nzWidth="15%">Redirect_url</th>
         <th nzWidth="20%">Status</th>
-        <th nzWidth="25%">Image Url</th>
         <!-- <th>Action</th> -->
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let city of cityList">
+      <tr *ngFor="let banner of bannerList">
         <!-- <ng-container *ngIf="!editCache[data.code].edit; else editTemplate"> -->
-          <td>{{ city.name}}</td>
-          <td>{{ city.code}}</td>
-          <td>{{ city.status}}</td>
-          <td>{{ city.image_url}}</td>
+          <td>{{banner.Image_url}</td>
+          <td>{{banner.Redirect_url}}</td>
+          <td>{{banner.status}}</td>
           <!-- <td><a (click)="startEdit(data.id)">Edit</a></td> -->
         <!-- </ng-container> -->
         <!-- <ng-template #editTemplate>
@@ -32,4 +28,4 @@
         </ng-template> -->
       </tr>
     </tbody>
-  </nz-table>
+</nz-table>
