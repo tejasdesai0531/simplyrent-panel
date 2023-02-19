@@ -1,45 +1,55 @@
 <h3 for="addCity">Add City</h3>
 
-<form class="row g-3 needs-validation" [formGroup]="cityForm" (ngSubmit)="submit()">
-    <div class="col-md-4 position-relative">
-      <label for="validationTooltip01" class="form-label">City Name</label>
-      <input formControlName="name" placeholder="City Name" type="text" class="form-control" id="name">
-      <div *ngIf="cityForm.get('name')!.invalid && cityForm.get('name')!.touched">
-        <p *ngIf="cityForm.get('name')!.errors!['required']" class="text-danger"> This field is required</p>
-        <p *ngIf="cityForm.get('name')!.errors!['minlength']" class="text-danger"> Minimum length is required 3</p>
-      </div>
-    </div>
-    <div class="col-md-4 position-relative">
-      <label for="validationTooltip02" class="form-label">City Code</label>
-      <input  formControlName="code" placeholder="City Code" type="text" class="form-control" id="code">
-      <div *ngIf="cityForm.get('code')!.invalid && cityForm.get('code')!.touched">
-        <p *ngIf="cityForm.get('code')!.errors!['required']" class="text-danger"> This field is required</p>
-        <p *ngIf="cityForm.get('code')!.errors!['minlength']" class="text-danger"> Minimum length is required 3</p>
-      </div>
-    </div>
-    <div class="col-md-4 position-relative">
-      <label for="validationTooltipUsername" class="form-label">Image</label>
-      <div class="input-group has-validation">
-        <input  formControlName="image" placeholder="Image" type="file" class="form-control" id="image">
-        <div *ngIf="cityForm.get('image')!.invalid && cityForm.get('image')!.touched">
-          <p *ngIf="cityForm.get('image')!.errors!['required']" class="text-danger"> This field is required</p>
-        </div>
-      </div>
-    </div>
 
-    <div class="col-md-3 position-relative">
-      <label for="validationTooltip04" class="form-label">Status</label>
-      <select  formControlName="status" class="form-select" id="status">
-        <option selected disabled value="null">Select Status...</option>
-        <option value="true">Enable</option>
-        <option value="false">Disabled</option>
-      </select>
-      <div *ngIf="cityForm.get('status')!.invalid && cityForm.get('status')!.touched">
-        <p *ngIf="cityForm.get('status')!.errors!['required']" class="text-danger"> This field is required</p>
+<form class="row g-4 needs-validation" [formGroup]="cityForm" (ngSubmit)="submit()">
+  <div class="col-md-4 position-relative">
+    <label for="validationTooltip01" class="form-label">City Name</label>
+    <input formControlName="name" placeholder="City Name" type="text" class="form-control" id="name">
+    <div *ngIf="cityForm.get('name')!.invalid && cityForm.get('name')!.touched">
+      <p *ngIf="cityForm.get('name')!.errors!['required']" class="text-danger"> This field is required</p>
+      <p *ngIf="cityForm.get('name')!.errors!['minlength']" class="text-danger"> Minimum length is required 3</p>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <label for="validationTooltip02" class="form-label">City Code</label>
+    <input  formControlName="code" placeholder="City Code" type="text" class="form-control" id="code">
+    <div *ngIf="cityForm.get('code')!.invalid && cityForm.get('code')!.touched">
+      <p *ngIf="cityForm.get('code')!.errors!['required']" class="text-danger"> This field is required</p>
+      <p *ngIf="cityForm.get('code')!.errors!['minlength']" class="text-danger"> Minimum length is required 3</p>
+    </div>
+  </div>
+  <div class="col-md-4 position-relative">
+    <label for="validationTooltipUsername" class="form-label">Image</label>
+    <div class="input-group has-validation">
+      <input  formControlName="image" placeholder="Image" type="file" class="form-control" id="image" (change)="onFileChange($event)">
+      <div *ngIf="cityForm.get('image')!.invalid && cityForm.get('image')!.touched">
+        <p *ngIf="cityForm.get('image')!.errors!['required']" class="text-danger"> This field is required</p>
       </div>
     </div>
-    
-    <div class="col-12">
-      <button class="btn btn-primary" type="submit">Submit form</button>
+  </div>
+
+  <div class="col-md-3 position-relative">
+    <label for="validationTooltip04" class="form-label">Status</label>
+    <select  formControlName="status" class="form-select" id="status">
+      <option selected disabled value="null">Select Status...</option>
+      <option value="true">Enable</option>
+      <option value="false">Disabled</option>
+    </select>
+    <div *ngIf="cityForm.get('status')!.invalid && cityForm.get('status')!.touched">
+      <p *ngIf="cityForm.get('status')!.errors!['required']" class="text-danger"> This field is required</p>
     </div>
-  </form>
+  </div>
+  
+  <div class="col-12">
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </div>
+</form>
+<div *ngIf="isLoading" class="loader">
+  <div class="spinner-border alert-dark" role="status">
+    <span class="sr-only"></span>
+  </div>
+  
+</div>
+
+
+ 

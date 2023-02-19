@@ -17,6 +17,7 @@ import { CityListComponent } from './city/components/city-list/city-list.compone
 import { AddCityComponent } from './city/components/add-city/add-city.component';
 import { CityModule } from './city/city.module';
 import { BannerModule } from './banner/banner.module';
+import { ToastrModule } from 'ngx-toastr';
 
 registerLocaleData(hi);
 
@@ -34,6 +35,7 @@ registerLocaleData(hi);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,

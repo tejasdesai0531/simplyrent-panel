@@ -1,6 +1,5 @@
-<!-- <p>city-list works!</p>
-<a routerLink="/city/add-city">Add City</a> -->
-<button class="addCityBtn" routerLink="/city/add-city">Add City</button>
+
+<button class="btn btn-primary" routerLink="/city/add-city">Add City</button>
 <nz-table #editRowTable nzBordered [nzData]="cityList" nzTableLayout="fixed">
     <thead>
       <tr>
@@ -8,7 +7,7 @@
         <th nzWidth="15%">City Code</th>
         <th nzWidth="20%">Status</th>
         <th nzWidth="25%">Image Url</th>
-        <!-- <th>Action</th> -->
+        <th nzWidth="25%">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -18,6 +17,9 @@
           <td>{{ city.code}}</td>
           <td>{{ city.status}}</td>
           <td>{{ city.image_url}}</td>
+          <td><a [routerLink]="['/edit-city', city.id]">edit</a></td>
+          
+          
           <!-- <td><a (click)="startEdit(data.id)">Edit</a></td> -->
         <!-- </ng-container> -->
         <!-- <ng-template #editTemplate>

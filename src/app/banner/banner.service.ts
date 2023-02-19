@@ -20,5 +20,8 @@ export class BannerService {
     return this.httpServices.get(`${environment.API_URL}api/banner`);
   }
 
+  addBanner(data:any):Observable<any> {
+    return this.httpServices.post(`${environment.API_URL}api/banner`, data);
+  }
   
 }

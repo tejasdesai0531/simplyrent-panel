@@ -6,7 +6,7 @@ import { BannerRoutingModule } from './banner-routing.module';
 import { AddBannerComponent } from './components/add-banner/add-banner.component';
 import { BannerListComponent } from './components/banner-list/banner-list.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,9 @@ import { NzTableModule } from 'ng-zorro-antd/table';
   imports: [
     CommonModule,
     BannerRoutingModule,
-    NzTableModule
+    NzTableModule,
+    ReactiveFormsModule
+    
   ]
 })
 export class BannerModule { }
