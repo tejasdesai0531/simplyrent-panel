@@ -1,7 +1,7 @@
 <h3 for="addCity">Add City</h3>
 
 
-<form class="row g-4 needs-validation" [formGroup]="cityForm" (ngSubmit)="submit()">
+<form class="row g-4 needs-validation" [formGroup]="cityForm">
   <div class="col-md-4 position-relative">
     <label for="validationTooltip01" class="form-label">City Name</label>
     <input formControlName="name" placeholder="City Name" type="text" class="form-control" id="name">
@@ -21,9 +21,11 @@
   <div class="col-md-4 position-relative">
     <label for="validationTooltipUsername" class="form-label">Image</label>
     <div class="input-group has-validation">
-      <input  formControlName="image" placeholder="Image" type="file" class="form-control" id="image" (change)="onFileChange($event)">
-      <div *ngIf="cityForm.get('image')!.invalid && cityForm.get('image')!.touched">
-        <p *ngIf="cityForm.get('image')!.errors!['required']" class="text-danger"> This field is required</p>
+      <input  placeholder="Image" type="file" class="form-control" id="image" (change)="onFileChange($event)">
+      <button *ngIf="image" (click)="uploadImage()">Upload</button>
+      <img [src]="cityForm.get('image_url')!.value">
+      <div *ngIf="cityForm.get('image_url')!.invalid && cityForm.get('image_url')!.touched">
+        <p *ngIf="cityForm.get('image_url')!.errors!['required']" class="text-danger"> This field is required</p>
       </div>
     </div>
   </div>
@@ -41,7 +43,7 @@
   </div>
   
   <div class="col-12">
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit" (click)="submit()">Submit</button>
   </div>
 </form>
 <div *ngIf="isLoading" class="loader">

@@ -1,0 +1,64 @@
+.login {
+  // margin: 80px 550px;
+  background-color: rgb(11, 10, 78);
+  width: 400px;
+  height: 400px; 
+  display: flex;
+  justify-content: center;
+  // align-items: center;
+  // flex-direction: column;
+  // row-gap: 20px;
+  border-radius: 20px;
+  
+}
+
+h1 {
+  text-align: center;
+  color: beige;
+
+}
+
+input {
+  width: 300px;
+  padding: 5px;
+  margin-top: 22px;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+}
+
+button{
+  width: 300px;
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid gray;
+  background-color: rgb(245, 172, 148);
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  color:black;
+  font-weight: 700;
+}
+.para{
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  margin-top: 10px;
+}
+.CreateAccount {
+  color: rgb(245, 172, 148);
+  font-weight: 700;
+
+}
+
+a{
+  color: rgb(245, 172, 148)
+}
+
+
+.forgotPassword{
+  color:rgb(245, 172, 148);
+  font-weight: 700;
+  text-decoration: none;
+}

@@ -15,6 +15,7 @@ export class AddCityComponent {
   cityForm: FormGroup;
   isLoading = false;
   id:any = null;
+  image:any;
 
   constructor(
     private fb: FormBuilder,
@@ -28,7 +29,7 @@ export class AddCityComponent {
       name: ["", [Validators.required, Validators.minLength(3)]],
       code: ["",  [Validators.required, Validators.minLength(3)]],
       status: [null, Validators.required],
-      image: [null, Validators.required]
+      image_url: [null, Validators.required]
     })    
   }
 
@@ -44,8 +45,8 @@ export class AddCityComponent {
           this.cityForm.patchValue({
             name: result.name,
             code: result.code,
-            image: result.image_url,
-            status: result.status
+            image_url: result.image_url,
+            status: result.status === 1 ? true : false
           })
 
         }
@@ -55,13 +56,29 @@ export class AddCityComponent {
   }
 
   onFileChange(event:any) {
-  console.log(event)
+    console.log(event)
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      this.cityForm.patchValue({
-        image: file
-      });
+      this.image = file
     }
+  }
+
+  uploadImage() {
+    let formData: FormData = new FormData();
+    formData.append('image', this.image);
+
+    this.isLoading = true
+    this.cityService.uploadImage(formData).subscribe(
+      (result) => {
+        this.isLoading = false
+        this.cityForm.get('image_url')!.setValue(result.image_url)
+        this.toastr.success(result.message)
+      },
+      (error) => {
+        this.isLoading = false
+        this.toastr.error('Something went wrong')
+      }
+    )
   }
 
   submit() {
@@ -72,15 +89,11 @@ export class AddCityComponent {
     }
     console.log(this.cityForm.value)
     let data = this.cityForm.value
-    let formData: FormData = new FormData(); 
-    formData.append('name', data.name); 
-    formData.append('code', data.code);
-    formData.append('status', data.status);
-    formData.append('image', data.image);
-
+    data.status = data.status === "true" ? true : false
+    
     this.isLoading = true;
     if(this.id) {
-      this.cityService.updateCity(formData).subscribe(
+      this.cityService.updateCity(this.id, data).subscribe(
         (result)=> {
             console.log(result)
             this.isLoading = false;
@@ -96,7 +109,7 @@ export class AddCityComponent {
   
       )
     } else {
-      this.cityService.addCity(formData).subscribe(
+      this.cityService.addCity(data).subscribe(
         (result)=> {
             console.log(result)
             this.isLoading = false;

@@ -27,8 +27,13 @@ export class CityService {
     return this.httpServices.get(`${environment.API_URL}api/city/${id}`);
   }
 
-  updateCity(data:any):Observable<any> {
-    return this.httpServices.put(`${environment.API_URL}api/city`, data);
+  updateCity(id:any, data:any):Observable<any> {
+    return this.httpServices.put(`${environment.API_URL}api/city/${id}`, data);
   }
+
+  uploadImage(data:any):Observable<any> {
+    return this.httpServices.post(`${environment.API_URL}api/city/upload`, data);
+  }
+
 
 }

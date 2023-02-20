@@ -18,6 +18,7 @@ import { AddCityComponent } from './city/components/add-city/add-city.component'
 import { CityModule } from './city/city.module';
 import { BannerModule } from './banner/banner.module';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthModule } from './auth/auth.module';
 
 registerLocaleData(hi);
 
@@ -41,7 +42,8 @@ registerLocaleData(hi);
     NzMenuModule,
     NzTableModule,
     CityModule,
-    BannerModule
+    BannerModule,
+    AuthModule
   ],
 
   

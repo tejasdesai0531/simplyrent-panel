@@ -14,8 +14,8 @@ export class AddBannerComponent {
   constructor(private fb: FormBuilder, private cityService: BannerService) {
 
     this.bannerForm = this.fb.group({
-      image: [null, Validators.required],
-      redirectPage: [null, Validators.required],
+      image_url: [null, Validators.required],
+      redirect_url: [null, Validators.required],
       status: [null, Validators.required],
 
     })    
@@ -30,17 +30,14 @@ export class AddBannerComponent {
     console.log(this.bannerForm.value)
     let data = this.bannerForm.value
     let formData: FormData = new FormData(); 
-    formData.append('image', data.name); 
-    formData.append('redirectImage', data.code);
+    formData.append('image_url', data.image_url); 
+    formData.append('redirect_url', data.redirect_url);
     formData.append('status', data.status);
 
     this.cityService.addBanner(formData).subscribe((result)=> {
       console.log(result)
     })
   }
-
-    
-  
 
 
 }
